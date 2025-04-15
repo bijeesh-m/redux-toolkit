@@ -3,8 +3,14 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../features/cartSlice";
 
+
 const ProductCard = ({ product }) => {
     const dispatch = useDispatch();
+
+    const handleAddToCart = (prodId) => {
+        
+        dispatch(addToCart(product));
+    };
 
     return (
         <div>
@@ -18,7 +24,7 @@ const ProductCard = ({ product }) => {
                         <p className=" line-clamp-2">{product.description}</p>
                     </div>
                     <div
-                        onClick={() => dispatch(addToCart(product))}
+                        onClick={() => handleAddToCart(product.id)}
                         className=" bg-amber-500 rounded px-3 py-1 text-center text-sm font-bold"
                     >
                         <button>Add to Cart</button>
